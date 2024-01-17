@@ -4,6 +4,7 @@ import { user } from "./controller/routes/user.routes.js";
 import { crearToken,validarToken } from "./controller/helpers/jwt.controller.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cors from 'cors';
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -15,6 +16,7 @@ const app: Express = express();
 const port = process.env.PORT;
 
 app.use(express.json());
+app.use(cors({origin:"*"}))
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
